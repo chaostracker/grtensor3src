@@ -33,6 +33,6 @@ for perm in permlist:
     else:
         print "gr_data[root,grG_metricName,"+permstr+"] :=\n  gr_data[root,grG_metricName,"+idxstr+"]:"
 
-
+## sample string to generate
 #   gr_data[root,grG_metricName,2,3,4,1] :=
 #     -gr_data[root,grG_metricName,1,2,3,4]:
