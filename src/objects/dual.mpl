@@ -316,6 +316,376 @@ grG_ObjDef[LevC(bup,bup,bup,bup)][grC_symmetry] := grF_sym_LevC4:
 grG_ObjDef[LevC(bup,bup,bup,bup)][grC_depends] := { detg }:
 
 #==============================================================================
+# Five dimensions
+#==============================================================================
+
+#------------------------------------------------------------------------------
+# preCalc_LevCS5 - pamir
+#------------------------------------------------------------------------------
+grF_preCalc_LevCS5 := proc(object, iList)
+local a, b, c, d, e, pset:
+global gr_data, grG_metricName, Ndim:
+  if Ndim[grG_metricName] <> 5 then
+    ERROR(``||object||` may only be calculated for n=5.`);
+  fi:
+  pset := {op(combinat[permute](5))}:
+  root := grG_ObjDef[object][grC_root]:
+  for a to 5 do
+    for b to 5 do
+      for c to 5 do
+        for d to 5 do
+          for e to 5 do
+            if not member ( [a,b,c,d,e], pset ) then
+              gr_data[root,grG_metricName,a,b,c,d,e] := 0:
+            fi:
+          od:
+        od:
+      od:
+    od:
+  od:
+  gr_data[root,grG_metricName,1,2,3,4,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,2,3,5,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,2,4,3,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,2,4,5,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,2,5,3,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,2,5,4,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,3,2,4,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,3,2,5,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,3,4,2,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,3,4,5,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,3,5,2,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,3,5,4,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,4,2,3,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,4,2,5,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,4,3,2,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,4,3,5,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,4,5,2,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,4,5,3,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,5,2,3,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,5,2,4,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,5,3,2,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,5,3,4,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,5,4,2,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,1,5,4,3,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,1,3,4,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,1,3,5,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,1,4,3,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,1,4,5,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,1,5,3,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,1,5,4,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,3,1,4,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,3,1,5,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,3,4,1,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,3,4,5,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,3,5,1,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,3,5,4,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,4,1,3,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,4,1,5,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,4,3,1,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,4,3,5,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,4,5,1,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,4,5,3,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,5,1,3,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,5,1,4,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,5,3,1,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,5,3,4,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,5,4,1,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,2,5,4,3,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,1,2,4,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,1,2,5,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,1,4,2,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,1,4,5,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,1,5,2,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,1,5,4,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,2,1,4,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,2,1,5,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,2,4,1,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,2,4,5,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,2,5,1,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,2,5,4,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,4,1,2,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,4,1,5,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,4,2,1,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,4,2,5,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,4,5,1,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,4,5,2,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,5,1,2,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,5,1,4,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,5,2,1,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,5,2,4,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,5,4,1,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,3,5,4,2,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,1,2,3,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,1,2,5,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,1,3,2,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,1,3,5,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,1,5,2,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,1,5,3,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,2,1,3,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,2,1,5,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,2,3,1,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,2,3,5,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,2,5,1,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,2,5,3,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,3,1,2,5] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,3,1,5,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,3,2,1,5] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,3,2,5,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,3,5,1,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,3,5,2,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,5,1,2,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,5,1,3,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,5,2,1,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,5,2,3,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,5,3,1,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,4,5,3,2,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,1,2,3,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,1,2,4,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,1,3,2,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,1,3,4,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,1,4,2,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,1,4,3,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,2,1,3,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,2,1,4,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,2,3,1,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,2,3,4,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,2,4,1,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,2,4,3,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,3,1,2,4] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,3,1,4,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,3,2,1,4] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,3,2,4,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,3,4,1,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,3,4,2,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,4,1,2,3] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,4,1,3,2] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,4,2,1,3] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,4,2,3,1] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,4,3,1,2] :=
+    -gr_data[root,grG_metricName,1,2,3,4,5]:
+  gr_data[root,grG_metricName,5,4,3,2,1] :=
+    gr_data[root,grG_metricName,1,2,3,4,5]:
+
+  gr_data[root,grG_metricName,1,2,3,4,5] :=
+    grG_ObjDef[object][grC_calcFnParms]:
+end:
+
+#------------------------------------------------------------------------------
+# LevCS - 5d, up
+#------------------------------------------------------------------------------
+grG_ObjDef[LevCS(up,up,up,up,up)][grC_header] := `Levi-Civita Symbol`:
+grG_ObjDef[LevCS(up,up,up,up,up)][grC_root] := LevCSupupupupup_:
+grG_ObjDef[LevCS(up,up,up,up,up)][grC_rootStr] := `e `:
+grG_ObjDef[LevCS(up,up,up,up,up)][grC_indexList] := [up,up,up,up,up]:
+grG_ObjDef[LevCS(up,up,up,up,up)][grC_preCalcFn] := grF_preCalc_LevCS5:
+grG_ObjDef[LevCS(up,up,up,up,up)][grC_calcFnParms] := 1:
+grG_ObjDef[LevCS(up,up,up,up,up)][grC_symmetry] := grF_sym_LevC5:
+grG_ObjDef[LevCS(up,up,up,up,up)][grC_depends] := {}:
+
+#------------------------------------------------------------------------------
+# LevCS - 5d, dn
+#------------------------------------------------------------------------------
+grG_ObjDef[LevCS(dn,dn,dn,dn,dn)][grC_header] := `Levi-Civita Symbol`:
+grG_ObjDef[LevCS(dn,dn,dn,dn,dn)][grC_root] := LevCSdndndndndn_:
+grG_ObjDef[LevCS(dn,dn,dn,dn,dn)][grC_rootStr] := `e `:
+grG_ObjDef[LevCS(dn,dn,dn,dn,dn)][grC_indexList] := [dn,dn,dn,dn,dn]:
+grG_ObjDef[LevCS(dn,dn,dn,dn,dn)][grC_preCalcFn] := grF_preCalc_LevCS5:
+grG_ObjDef[LevCS(dn,dn,dn,dn,dn)][grC_calcFnParms] := 1:
+grG_ObjDef[LevCS(dn,dn,dn,dn,dn)][grC_symmetry] := grF_sym_LevC5:
+grG_ObjDef[LevCS(dn,dn,dn,dn,dn)][grC_depends] := { }:
+
+#------------------------------------------------------------------------------
+# LevCS - 5d, up, basis
+#------------------------------------------------------------------------------
+grG_ObjDef[LevCS(bup,bup,bup,bup,bup)][grC_header] := `Levi-Civita Symbol`:
+grG_ObjDef[LevCS(bup,bup,bup,bup,bup)][grC_root] := LevCSbupbupbupbupbup_:
+grG_ObjDef[LevCS(bup,bup,bup,bup,bup)][grC_rootStr] := `e `:
+grG_ObjDef[LevCS(bup,bup,bup,bup,bup)][grC_indexList] := [bup,bup,bup,bup,bup]:
+grG_ObjDef[LevCS(bup,bup,bup,bup,bup)][grC_preCalcFn] := grF_preCalc_LevCS5:
+grG_ObjDef[LevCS(bup,bup,bup,bup,bup)][grC_calcFnParms] := 1:
+grG_ObjDef[LevCS(bup,bup,bup,bup,bup)][grC_symmetry] := grF_sym_LevC5:
+grG_ObjDef[LevCS(bup,bup,bup,bup,bup)][grC_depends] := { }:
+
+#------------------------------------------------------------------------------
+# LevCS - 5d, dn, basis
+#------------------------------------------------------------------------------
+grG_ObjDef[LevCS(bdn,bdn,bdn,bdn,bdn)][grC_header] := `Levi-Civita Symbol`:
+grG_ObjDef[LevCS(bdn,bdn,bdn,bdn,bdn)][grC_root] := LevCSbdnbdnbdnbdnbdn_:
+grG_ObjDef[LevCS(bdn,bdn,bdn,bdn,bdn)][grC_rootStr] := `e `:
+grG_ObjDef[LevCS(bdn,bdn,bdn,bdn,bdn)][grC_indexList] := [bdn,bdn,bdn,bdn,bdn]:
+grG_ObjDef[LevCS(bdn,bdn,bdn,bdn,bdn)][grC_preCalcFn] := grF_preCalc_LevCS5:
+grG_ObjDef[LevCS(bdn,bdn,bdn,bdn,bdn)][grC_calcFnParms] := 1:
+grG_ObjDef[LevCS(bdn,bdn,bdn,bdn,bdn)][grC_symmetry] := grF_sym_LevC5:
+grG_ObjDef[LevCS(bdn,bdn,bdn,bdn,bdn)][grC_depends] := { }:
+
+#------------------------------------------------------------------------------
+# LevC(dn,dn,dn,dn,dn)
+#------------------------------------------------------------------------------
+grG_ObjDef[LevC(dn,dn,dn,dn,dn)][grC_header] := `Levi-Civita Tensor`:
+grG_ObjDef[LevC(dn,dn,dn,dn,dn)][grC_root] := LevCdndndndndn_:
+grG_ObjDef[LevC(dn,dn,dn,dn,dn)][grC_rootStr] := `e `:
+grG_ObjDef[LevC(dn,dn,dn,dn,dn)][grC_indexList] := [dn,dn,dn,dn,dn]:
+grG_ObjDef[LevC(dn,dn,dn,dn,dn)][grC_preCalcFn] := grF_preCalc_LevCS5:
+grG_ObjDef[LevC(dn,dn,dn,dn,dn)][grC_calcFnParms] := (-gr_data[detg_,grG_metricName])^(1/2):
+grG_ObjDef[LevC(dn,dn,dn,dn,dn)][grC_symmetry] := grF_sym_LevC5:
+grG_ObjDef[LevC(dn,dn,dn,dn,dn)][grC_depends] := { detg }:
+
+#------------------------------------------------------------------------------
+# LevC(up,up,up,up,up)
+#------------------------------------------------------------------------------
+grG_ObjDef[LevC(up,up,up,up,up)][grC_header] := `Levi-Civita Tensor`:
+grG_ObjDef[LevC(up,up,up,up,up)][grC_root] := LevCupupupupup_:
+grG_ObjDef[LevC(up,up,up,up,up)][grC_rootStr] := `e `:
+grG_ObjDef[LevC(up,up,up,up,up)][grC_indexList] := [up,up,up,up,up]:
+grG_ObjDef[LevC(up,up,up,up,up)][grC_preCalcFn] := grF_preCalc_LevCS5:
+grG_ObjDef[LevC(up,up,up,up,up)][grC_calcFnParms] := -1/(-gr_data[detg_,grG_metricName])^(1/2):
+grG_ObjDef[LevC(up,up,up,up,up)][grC_symmetry] := grF_sym_LevC5:
+grG_ObjDef[LevC(up,up,up,up,up)][grC_depends] := { detg }:
+
+#------------------------------------------------------------------------------
+# LevC(bdn,bdn,bdn,bdn,bdn)
+#------------------------------------------------------------------------------
+grG_ObjDef[LevC(bdn,bdn,bdn,bdn,bdn)][grC_header] := `Levi-Civita Tensor`:
+grG_ObjDef[LevC(bdn,bdn,bdn,bdn,bdn)][grC_root] := LevCbdnbdnbdnbdnbdn_:
+grG_ObjDef[LevC(bdn,bdn,bdn,bdn,bdn)][grC_rootStr] := `e `:
+grG_ObjDef[LevC(bdn,bdn,bdn,bdn,bdn)][grC_indexList] := [bdn,bdn,bdn,bdn,bdn]:
+grG_ObjDef[LevC(bdn,bdn,bdn,bdn,bdn)][grC_preCalcFn] := grF_preCalc_LevCS5:
+grG_ObjDef[LevC(bdn,bdn,bdn,bdn,bdn)][grC_calcFnParms] := (-gr_data[detg_,grG_metricName])^(1/2):
+grG_ObjDef[LevC(bdn,bdn,bdn,bdn,bdn)][grC_symmetry] := grF_sym_LevC5:
+grG_ObjDef[LevC(bdn,bdn,bdn,bdn,bdn)][grC_depends] := { detg }:
+
+#------------------------------------------------------------------------------
+# LevC(bup,bup,bup,bup,bup)
+#------------------------------------------------------------------------------
+grG_ObjDef[LevC(bup,bup,bup,bup,bup)][grC_header] := `Levi-Civita Tensor`:
+grG_ObjDef[LevC(bup,bup,bup,bup,bup)][grC_root] := LevCbupbupbupbupbup_:
+grG_ObjDef[LevC(bup,bup,bup,bup,bup)][grC_rootStr] := `e `:
+grG_ObjDef[LevC(bup,bup,bup,bup,bup)][grC_indexList] := [bup,bup,bup,bup,bup]:
+grG_ObjDef[LevC(bup,bup,bup,bup,bup)][grC_preCalcFn] := grF_preCalc_LevCS5:
+grG_ObjDef[LevC(bup,bup,bup,bup,bup)][grC_calcFnParms] := -1/(-gr_data[detg_,grG_metricName])^(1/2):
+grG_ObjDef[LevC(bup,bup,bup,bup,bup)][grC_symmetry] := grF_sym_LevC5:
+grG_ObjDef[LevC(bup,bup,bup,bup,bup)][grC_depends] := { detg }:
+
+
+#==============================================================================
 # Tensors
 #==============================================================================
 #                       ij
