@@ -343,8 +343,6 @@ global gr_data, grG_metricName, Ndim:
       od:
     od:
   od:
-  gr_data[root,grG_metricName,1,2,3,4,5] :=
-    gr_data[root,grG_metricName,1,2,3,4,5]:
   gr_data[root,grG_metricName,1,2,3,5,4] :=
     -gr_data[root,grG_metricName,1,2,3,4,5]:
   gr_data[root,grG_metricName,1,2,4,3,5] :=
