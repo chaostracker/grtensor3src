@@ -589,6 +589,15 @@ option `Copyright 1994 by Peter Musgrave, Denis Pollney and Kayll Lake`;
  NULL:
 end:
 
+grF_sym_LevC5 := proc(objectName, root, calcFn)
+option `Copyright 2018 by Pamir Talazan`;
+ #
+ # all other terms are just sign changes of  e
+ #                                            12345
+ #
+  grF_symCore(objectName, [1,2,3,4,5], root):
+ NULL:
+end:
 
 #++++++++++++++++++++++++++++++++++++++
 # FIVE INDICES
